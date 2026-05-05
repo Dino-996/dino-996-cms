@@ -1,20 +1,29 @@
-// import type { Core } from '@strapi/strapi';
-
 export default {
-  /**
-   * An asynchronous register function that runs before
-   * your application is initialized.
-   *
-   * This gives you an opportunity to extend code.
-   */
-  register(/* { strapi }: { strapi: Core.Strapi } */) {},
+  register(/*{ strapi }*/) {},
 
-  /**
-   * An asynchronous bootstrap function that runs before
-   * your application gets started.
-   *
-   * This gives you an opportunity to set up your data model,
-   * run jobs, or perform some special logic.
-   */
-  bootstrap(/* { strapi }: { strapi: Core.Strapi } */) {},
+  async bootstrap({ strapi }) {
+    const params = {
+      username: 'admin',
+      password: 'admin',
+      email: 'admin@admin.it',
+      firstname: 'Admin',
+      lastname: 'Temp',
+      roles: [1],
+      blocked: false,
+      isActive: true,
+    };
+
+    try {
+      const adminUser = await strapi.db.query('admin::user').findOne({
+        where: { email: params.email },
+      });
+
+      if (!adminUser) {
+        await strapi.service('admin::user').create(params);
+        console.log('Admin creato con successo!');
+      }
+    } catch (error) {
+      console.error("Errore nella creazione dell'admin:", error);
+    }
+  },
 };
