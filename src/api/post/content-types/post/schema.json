@@ -61,6 +61,21 @@
     "imageAlt": {
       "type": "string",
       "default": "Immagine generata con IA"
+    },
+    "author": {
+      "type": "string",
+      "default": "Davide Sabia",
+      "required": true,
+      "unique": false
+    },
+    "authorAvatar": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     }
   }
 }
