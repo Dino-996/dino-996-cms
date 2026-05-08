@@ -8,5 +8,14 @@ export default (config: UserConfig) => {
         '@': '/src',
       },
     },
+    optimizeDeps: {
+      include: [
+        '@strapi/design-system',
+        '@strapi/icons',
+        'react-intl',
+        'styled-components',
+      ],
+    },
+    
   });
 };
