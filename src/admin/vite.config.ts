@@ -1,7 +1,6 @@
 import { mergeConfig, type UserConfig } from 'vite';
 
 export default (config: UserConfig) => {
-  // Important: always return the modified config
   return mergeConfig(config, {
     resolve: {
       alias: {
@@ -14,8 +13,8 @@ export default (config: UserConfig) => {
         '@strapi/icons',
         'react-intl',
         'styled-components',
+        'react-router-dom',
       ],
     },
-    
   });
 };
