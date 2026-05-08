@@ -3,12 +3,8 @@ export default {
         locales: [
             'it'
         ],
-        auth: {
-            logo: ""
-        },
-        menu: {
-            logo: ""
-        },
+        tutorials: false,
+        notifications: false,
         tutorials: false,
         notification: { release: false }
     },
